@@ -15,34 +15,19 @@ public class start_menu_script : MonoBehaviour {
 
     private void Update()
     {
-        //if (!Starpress)
-        //{
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        start_pressed();
-        //        Starpress = true;
-        //    }
-        //}
-        
-
-
+        if (!Starpress)
+        {
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+            {
+                start_pressed();
+                Starpress = true;
+            }
+        }
     }
 
    
 	public void start_pressed()
-    {		 
-		
-		
-	    if (Application.CanStreamedLevelBeLoaded("Game"))
-        {
-		    StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Game"));
-	    }
-
-        else
-        {
-		 	StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Game_mobile"));
-	
-	    }
-	
+    {
+        StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission01"));	
 	}
 }

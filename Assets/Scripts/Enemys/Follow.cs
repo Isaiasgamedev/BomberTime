@@ -12,6 +12,7 @@ public class Follow : MonoBehaviour
     public enum StateFollow { Follow, Unfollow, Wait}
     public StateFollow ControlFollow;
     public bool CanFollow;
+    public bool KickBombOn = true;
 
 
 
@@ -82,7 +83,7 @@ public class Follow : MonoBehaviour
             GameObject go = Instantiate(bombPrefab, TransformPlayer.position,
             bombPrefab.transform.rotation);
             go.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-            go.GetComponent<Bomb>().explode_size = 1;
+            go.GetComponent<BombEnemies>().explode_size = 1;
 
         }
 
@@ -109,12 +110,17 @@ public class Follow : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Bomb")
+        if (KickBombOn)
         {
-            Debug.Log("BOMBA");
-            collision.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(kickBomb * 2, ForceMode.Impulse);
+            if (collision.gameObject.tag == "Bomb")
+            {
+                Debug.Log("BOMBA");
+                collision.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                collision.gameObject.GetComponent<Rigidbody>().AddForce(kickBomb * 2, ForceMode.Impulse);
+            }
         }
+
+       
     }
 
 

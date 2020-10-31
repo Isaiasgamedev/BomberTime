@@ -50,8 +50,38 @@ public class hide_on_start : MonoBehaviour
 
 	public void restart(){
 		Time.timeScale = 1;
-		FindObjectOfType<Global_Game_Controller>().Restart();
-	}
+
+        // get animation
+        fade_script fade = new fade_script();
+        // init fader
+        foreach (fade_script f in FindObjectsOfType<fade_script>())
+        {
+            if (f.tag == "fader")
+            {
+                fade = f;
+            }
+
+            else
+            {
+                Debug.Log("TESTE");
+                continue;
+            }
+        }
+
+        // reset values
+
+
+        // load map
+        if (Application.CanStreamedLevelBeLoaded("Game"))
+        {
+            StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + FindObjectOfType<start_text_script>().Levelnow));
+        }
+
+        else
+        {
+            StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + FindObjectOfType<start_text_script>().Levelnow));
+        }
+    }
 	public void exit(){
 		Time.timeScale = 1;
 		Application.Quit();

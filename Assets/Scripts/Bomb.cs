@@ -7,22 +7,46 @@ public class Bomb : MonoBehaviour
 {
 
     public Player player;
-
+    public float TimerTrigger;
     public int explode_size = 2;
     public GameObject explosionPrefab;
     private bool exploded = false;
+    public float TimerExplode = 2.7f;
+    public GameObject timeText;
+    public int TimerNow;
 
-	// Use this for initialization
-	void Start ()
-    {
+    // Use this for initialization
+    void Start ()
+    {        
  		Invoke("Explode", 3f);
+        
+        
+        GetComponent<SphereCollider>().isTrigger = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
-	}
+        TimerExplode -= Time.deltaTime;
+
+        if (TimerExplode <= 0)
+        {
+            TimerExplode = 0;
+        }
+
+        TimerTrigger += Time.deltaTime;
+
+        timeText.GetComponent<TextMesh>().text = string.Format("{1:00}", 0, TimerExplode);
+
+        if (TimerTrigger > 1f)
+        {
+            GetComponent<SphereCollider>().isTrigger = false;
+        }
+
+    
+
+        
+    }
 
 	void Explode() 
     {

@@ -24,5 +24,38 @@ public class Portal : MonoBehaviour
 
             
         }
+
+
+        // get animation
+        fade_script fade = new fade_script();
+        // init fader
+        foreach (fade_script f in FindObjectsOfType<fade_script>())
+        {
+            if (f.tag == "fader")
+            {
+                fade = f;
+            }
+
+            else
+            {
+                Debug.Log("TESTE");
+                continue;
+            }
+        }
+
+        // reset values
+
+
+        // load map
+        if (Application.CanStreamedLevelBeLoaded("Game"))
+        {
+            StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + ExitControl));
+        }
+
+        else
+        {
+            StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + ExitControl));
+        }
+
     }
 }

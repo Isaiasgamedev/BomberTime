@@ -69,12 +69,13 @@ public void construct(int _start_poses, int x, int y, GameObject parent){
     create_map(x,y);
 }
 
-public bool is_walkable(int x, int y){
-   
-    return array_representation[x,y] != Blocks.Wall;
-}
+    public bool is_walkable(int x, int y)
+    {
 
-private void create_map(int x, int y){
+        return array_representation[x, y] != Blocks.Wall;
+    }
+
+    private void create_map(int x, int y){
     
     /* Yet again ugly code but fast working for now */
     // player start pos

@@ -39,7 +39,7 @@ public class Shoot : MonoBehaviour
 
             if (Bullets)
             {
-                if (TimerShoot > 2f)
+                if (TimerShoot > 1f)
                 {
                     Shoots++;
 
@@ -55,7 +55,7 @@ public class Shoot : MonoBehaviour
 
             if (Bullets)
             {
-                if (TimerShoot > 3f)
+                if (TimerShoot > 2f)
                 {
                     Shoots++;
 

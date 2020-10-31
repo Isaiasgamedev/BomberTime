@@ -30,7 +30,7 @@ public class Mission_Text_Script : MonoBehaviour {
 	private string create_text(){
 		string res = "";
 		int i =	PlayerPrefs.GetInt("current_level");
-		Debug.Log(i);
+		//Debug.Log(i);
 		res += s_1;
 		if(i >= 1){
 			res+= secret_1;

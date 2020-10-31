@@ -18,70 +18,70 @@ public class Global_Game_Controller : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-		 Application.targetFrameRate = 30;
+		// Application.targetFrameRate = 30;
 
-		// init labels
-		 foreach(Text t in FindObjectsOfType<Text>()){
-                switch(t.tag){
-                    case "enemies":
-                    enemy_label = t;
-                    break;
-					case "level":
-                    level_label = t;
-                    break;
-				}
-		 }
+		//// init labels
+		// foreach(Text t in FindObjectsOfType<Text>()){
+  //              switch(t.tag){
+  //                  case "enemies":
+  //                  enemy_label = t;
+  //                  break;
+		//			case "level":
+  //                  level_label = t;
+  //                  break;
+		//		}
+		// }
 
 
-		// increase map size over maps
-		if(PlayerPrefs.GetInt("current_level").ToString().Length == 0)
-        {
-			PlayerPrefs.SetInt("current_level", 1);
-		}
+		//// increase map size over maps
+		//if(PlayerPrefs.GetInt("current_level").ToString().Length == 0)
+  //      {
+		//	PlayerPrefs.SetInt("current_level", 1);
+		//}
 
-        int level = PlayerPrefs.GetInt("current_level");
+  //      int level = PlayerPrefs.GetInt("current_level");
        
 
-        //if (level <= 8)
-        //{
-        //    map = gameObject.AddComponent<Map>();
-        //    map.construct(1 + level, 13, 13, map_parent);
-        //}
-        //else
-        //{
-        //    map = gameObject.AddComponent<Map>();
-        //    map.construct(1 + level, 13 + (level - 8) * 2, 13 + (level - 8) * 2, map_parent);
-        //}
+  //      //if (level <= 8)
+  //      //{
+  //      //    map = gameObject.AddComponent<Map>();
+  //      //    map.construct(1 + level, 13, 13, map_parent);
+  //      //}
+  //      //else
+  //      //{
+  //      //    map = gameObject.AddComponent<Map>();
+  //      //    map.construct(1 + level, 13 + (level - 8) * 2, 13 + (level - 8) * 2, map_parent);
+  //      //}
 
 
 
-        if (level == 0)
-        {
-            map = gameObject.AddComponent<Map>();
-            map.construct(1 + level, 9, 9, map_parent);
-        }
-        else if (level == 1)
-        {
-            map = gameObject.AddComponent<Map>();
-            map.construct(1 + level, 11, 11, map_parent);
-        }
+  //      if (level == 0)
+  //      {
+  //          map = gameObject.AddComponent<Map>();
+  //          map.construct(1 + level, 9, 9, map_parent);
+  //      }
+  //      else if (level == 1)
+  //      {
+  //          map = gameObject.AddComponent<Map>();
+  //          map.construct(1 + level, 11, 11, map_parent);
+  //      }
 
-        else if (level >= 2 && level <= 4)
-        {
-            map = gameObject.AddComponent<Map>();
-            map.construct(1 + level, 13, 13, map_parent);
-        }
+  //      else if (level >= 2 && level <= 4)
+  //      {
+  //          map = gameObject.AddComponent<Map>();
+  //          map.construct(1 + level, 13, 13, map_parent);
+  //      }
 
-        else if (level % 5 == 0)
-        {
-            map = gameObject.AddComponent<Map>();
-            map.construct(1 + level, 15 + (level - 8) * 2, 15 + (level - 8) * 2, map_parent);
-        }
+  //      else if (level % 5 == 0)
+  //      {
+  //          map = gameObject.AddComponent<Map>();
+  //          map.construct(1 + level, 15 + (level - 8) * 2, 15 + (level - 8) * 2, map_parent);
+  //      }
 
-        if (level == 0)
-        {
-            Destroy(GameObject.Find("Door(Clone)"));
-        }
+  //      if (level == 0)
+  //      {
+  //          Destroy(GameObject.Find("Door(Clone)"));
+  //      }
             
 
     }
@@ -143,12 +143,12 @@ public class Global_Game_Controller : MonoBehaviour {
 		// load map
 		if (Application.CanStreamedLevelBeLoaded("Game"))
         {
-		    StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Game"));
+		    StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + FindObjectOfType<start_text_script>().Levelnow));
 	    }
 
         else
         {
-		 	StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Game_mobile"));	
+		 	StartCoroutine(GameObject.FindObjectOfType<fade_script>().FadeAndLoadScene(fade_script.FadeDirection.In, "Mission0" + FindObjectOfType<start_text_script>().Levelnow));	
 	    }
            
        

@@ -10,12 +10,17 @@ public class Patrol : MonoBehaviour
     public GameObject BombPosition;
     public ParticleSystem explosion;
     public GameObject[] Walls;   
-    public Transform[] PositionsControl;   
+    public Transform[] PositionsControl; 
+    public static bool CanMove = false;
 
     // Update is called once per frame
     void Update()
-    {        
-        _Patrolrun();
+    {
+        
+
+        if (!CanMove) return;
+
+        _Patrolrun();   
     }
 
     public void _Patrolrun()
@@ -72,7 +77,7 @@ public class Patrol : MonoBehaviour
             GameObject go = Instantiate(bombPrefab, BombPosition.transform.position,
             bombPrefab.transform.rotation);
 
-            go.GetComponent<Bomb>().explode_size = 2;            
+            go.GetComponent<BombEnemies>().explode_size = 2;            
             
         }
        
