@@ -5,7 +5,7 @@ using UnityEngine;
 public class camera_follow_player : MonoBehaviour {
 
 
-	public Player_Controller player_controller;
+	public Transform player_controller;
 
     public Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
@@ -14,11 +14,9 @@ public class camera_follow_player : MonoBehaviour {
 	void Start () {
 		
 
-		if(player_controller != null){
-
-		
-		player_controller = FindObjectOfType<Player_Controller>();
-		offset =new Vector3(-1,0,-4) ;
+		if(player_controller != null)
+        {			    
+		    offset =new Vector3(-1,0,-4) ;
 		}
 	}
 	

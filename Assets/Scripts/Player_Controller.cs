@@ -6,8 +6,10 @@ using System;
 public class Player_Controller : Controller
 {
     private string FireAxis = "Fire 1";
-
+    public enum Players { Player1, Player2 };
+    public Players PlayerControl;
     public bool canDropBombs = true;
+    public KeyCode Press;
     //Can the player drop bombs?
     public bool canMove = true;
     //Can the player move?
@@ -26,13 +28,15 @@ public class Player_Controller : Controller
     // Use this for initialization
     void Start ()
     {
-	     if (Application.CanStreamedLevelBeLoaded("Game"))
-     {
-		mobile = false;
-	 } else {
-		mobile = true;
-	
-	 }
+	    if (Application.CanStreamedLevelBeLoaded("Game"))
+        {
+		    mobile = false;
+	    }
+
+        else
+        {
+		    mobile = true;	
+	    }
 
         player = GetComponent<Player>();
         //Cache the attached components for better performance and less typing
@@ -67,58 +71,52 @@ public class Player_Controller : Controller
     /// </summary>
     private void UpdatePlayer2Movement ()
     {
-    
-    if (Input.GetButton("Up"))
+        if (PlayerControl == Players.Player1)
+        {
+            Vector3 vel = new Vector3 (Input.GetAxis("Horizontal")*player.moveSpeed, rigidBody.velocity.y, Input.GetAxis("Vertical")*player.moveSpeed);
+            if(vel != rigidBody.velocity)
+            {
+                rigidBody.velocity = vel;
+                myTransform.rotation = Quaternion.Euler (0, FindDegree(Input.GetAxis("Horizontal"),  Input.GetAxis("Vertical")), 0);
+                animator.SetBool ("Walking", true);
+            }
+
+            if (canDropBombs && (Input.GetKeyDown(Press)))
+            { //Drop Bomb. For Player 2's bombs, allow both the numeric enter as the return key or players 
+              //without a numpad will be unable to drop bombs
+
+                DropBomb();
+
+            }
+        }
+
+
+        else if (PlayerControl == Players.Player2)
+        {
+            Vector3 vel = new Vector3(Input.GetAxis("Horizontal2") * player.moveSpeed, rigidBody.velocity.y, Input.GetAxis("Vertical2") * player.moveSpeed);
+            if (vel != rigidBody.velocity)
+            {
+                rigidBody.velocity = vel;
+                myTransform.rotation = Quaternion.Euler(0, FindDegree(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2")), 0);
+                animator.SetBool("Walking", true);
+            }
+
+            if (canDropBombs && (Input.GetKeyDown(Press)))
+            { //Drop Bomb. For Player 2's bombs, allow both the numeric enter as the return key or players 
+              //without a numpad will be unable to drop bombs
+
+                DropBomb();
+
+            }
+
+        }
+
+
+
+
+
+
        
-        { //Up movement
-     
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, player.moveSpeed);
-            myTransform.rotation = Quaternion.Euler (0, 0, 0);
-            animator.SetBool ("Walking", true);
-        }
-
-        if (Input.GetButton("Left"))
-        { //Left movement
-            rigidBody.velocity = new Vector3 (-player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
-            myTransform.rotation = Quaternion.Euler (0, 270, 0);
-            animator.SetBool ("Walking", true);
-        }
-
-        if (Input.GetButton("Down"))
-        { //Down movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -player.moveSpeed);
-            myTransform.rotation = Quaternion.Euler (0, 180, 0);
-            animator.SetBool ("Walking", true);
-        }
-
-        if (Input.GetButton("Right"))
-        { //Right movement
-            rigidBody.velocity = new Vector3 (player.moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
-            myTransform.rotation = Quaternion.Euler (0, 90, 0);
-            animator.SetBool ("Walking", true);
-        }
-
-        if(mobile){
-        Vector3 vel = new Vector3 (Input.GetAxis("Horizontal")*player.moveSpeed, rigidBody.velocity.y, Input.GetAxis("Vertical")*player.moveSpeed);
-        if(vel != rigidBody.velocity){
-        rigidBody.velocity = vel;
-         myTransform.rotation = Quaternion.Euler (0, FindDegree(Input.GetAxis("Horizontal"),  Input.GetAxis("Vertical")), 0);
-            animator.SetBool ("Walking", true);
-        }
-        }
-        
-        
-      
-        
-        
-
-        if (canDropBombs && (Input.GetKeyDown (KeyCode.KeypadEnter) || Input.GetKeyDown (KeyCode.Return) || Input.GetButtonDown("Submit")))
-        { //Drop Bomb. For Player 2's bombs, allow both the numeric enter as the return key or players 
-            //without a numpad will be unable to drop bombs
-          
-            DropBomb ();
-            
-        }
     }
 
      public static float FindDegree(float x, float y){

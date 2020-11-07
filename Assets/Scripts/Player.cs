@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     //drops a bomb, increases as an owned bomb explodes
     public bool canKick = false;
     public int lifes = 1;
-    public int explosion_power = 2;
+    public int explosion_power = 1;
     public bool dead = false;
     public bool respawning = false;
 
