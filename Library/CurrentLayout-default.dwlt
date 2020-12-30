@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 342}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 63
+  controlID: 38
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -372,23 +372,23 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 776
-      height: 425
-    m_Scale: {x: 0.3935185, y: 0.3935185}
-    m_Translation: {x: 388, y: 212.5}
+      height: 404
+    m_Scale: {x: 0.37407404, y: 0.37407407}
+    m_Translation: {x: 388, y: 202}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -985.9765
+      x: -1037.2278
       y: -540
-      width: 1971.953
+      width: 2074.4556
       height: 1080
     m_MinimalGUI: 1
-  m_defaultScale: 0.3935185
+  m_defaultScale: 0.37407407
   m_LastWindowPixelSize: {x: 776, y: 425}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -431,9 +431,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -13.9341755, y: -9.238281, z: 60.213047}
+    m_Target: {x: -24.530289, y: -13.136688, z: 40.129288}
     speed: 2
-    m_Value: {x: -13.9341755, y: -9.238281, z: 60.213047}
+    m_Value: {x: -24.530289, y: -13.136688, z: 40.129288}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -481,15 +481,15 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: -0.7071068, y: 0, z: -0, w: -0.7071068}
+    m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 26.007751
+    m_Target: 39.374336
     speed: 2
-    m_Value: 26.007751
+    m_Value: 37.67879
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -870,10 +870,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 14571}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6afbffff
+      m_ExpandedIDs: 18cfffff6afbffffc04000000a4e000046510000165200005e5800000a600000da6200003e6300008e640000726700000a6a000034720000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
